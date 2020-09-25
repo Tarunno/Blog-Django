@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="icon" sizes="16x16" type="image/png" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>Our words | {{ title }}</title>
+    {% else %}
+        <title>Our words | home</title>
+    {% endif %}
+</head>
+<body>
+<div class="links">
+    <div class="social">
+        <i class="fab fa-facebook-square"></i>
+        <i class="fab fa-twitter-square"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-github-square"></i>
+    </div>
+</div>
+<div class="nav">
+    <div class="container">
+        <h1> OUR WORDS. </h1>
+        <div class="nav-link" id='nav-list'>
+            <a class="home-btn" href="{% url 'home' %}"> HOME</a>
+            <a class="about-btn" href="{% url 'about' %}"> ABOUT</a>
+            {% if user.is_authenticated %}
+                <a class="profile-btn" href="{% url 'profile' %}"> PROFILE</a>
+                <a class="logout-btn" href="{% url 'logout' %}"> LOGOUT</a>
+            {% else %}
+                <a class="login-btn" href="{% url 'login' %}"> LOGIN</a>
+                <a class="signup-btn" href="{% url 'signup' %}"> SINGUP</a>
+            {% endif %}
+        </div>
+        <div class="nav-link" id="nav-btn">
+            <ul>
+                <li>
+                    <img src={% static 'menu.svg' %} style="height: 30px; width: 30px; padding: 5px;">
+                    <ul>
+                        <li><a class="home-btn" href="{% url 'home' %}"> HOME</a></li>
+                        <li><a class="about-btn" href="{% url 'about' %}"> ABOUT</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a class="profile-btn" href="{% url 'profile' %}"> PROFILE</a></li>
+                            <li><a class="logout-btn" href="{% url 'logout' %}"> LOGOUT</a></li>
+                        {% else %}
+                            <li><a class="login-btn" href="{% url 'login' %}"> LOGIN</a></li>
+                            <li><a class="signup-btn" href="{% url 'signup' %}"> SINGUP</a></li>
+                        {% endif %}
+                        <li style="padding-left: 15px;">Categories
+                            <li><a style="text-decoration: none;" href="/">All</a></li>
+                            {% for category in categories %}
+                            <li><a style="text-decoration: none;" href="category-home/cat/{{ category.id }}">{{ category.title }}</a></li>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    {% if messages %}
+        <div class="message">
+            {% for message in messages %}
+                <p>{{ message }} </p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block body %}
+    {% endblock %}
+<div class="footer">
+    <p>DJANGO BLOG | mahadi hasan tarunno, 2020</p>
+    <p class="footer-scondary-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
+</div>
+</body>
+</html>

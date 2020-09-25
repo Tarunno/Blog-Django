@@ -1,0 +1,58 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <div class="category-list">
+        <div class="heading">
+            <h1>Categories</h1>
+        </div>
+        <div class="list">
+            <ul>
+                <li><a style="text-decoration: none; color: #111;" href="../../../">All </a></li>
+                {% for category in categories %}
+                <li><a style="text-decoration: none; color: #111;" href="../../../category-home/cat/{{ category.id }}">{{ category.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="posts">
+        <h1 class="post-heading">News feed</h1>
+        {% for post in posts %}
+        <div class="post">
+            <img class="post-img" src={{ post.image.url }}>
+            <a href="single/{{ post.id }}"><h2 class="title">{{ post.title }}</h2></a>
+            <div class="author-container">
+                <p class="author"><img class="author-img" src={{ post.author.profile.image.url }}>
+                    {{ post.author.first_name }} {{ post.author.last_name }} | {{ post.author }} </p><br>
+                <p class="date">{{ post.date | date:"D d M Y"}}</p><br>
+            </div>
+            <h3 class="category" post_id={{post.id }}>{{ post.category }} <i id="read-post-alert-comment" class="far fa-comments"></i>  {{ post.comments.count }}
+            <i id="read-post-alert-like" class="far fa-thumbs-up"></i> {{ post.likes.count }} </h3><br><br><br>
+            <p class="text">{{ post.post | safe | slice:280}}... <a href="../../single/{{ post.id }}"> Read more</a> </p>
+        </div>
+    {% endfor %}
+    </div>
+
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+
+        </span>
+    </div>
+
+<script src="{% static 'js/category_home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}">
+<div class="post-container">
+    <div class="read">
+        <h1> {{ posts.title }} </h1>
+        <img src={{ posts.image.url }}>
+        <p class="author"><img class="author-img" src={{ posts.author.profile.image.url }}>
+            {{ posts.author.first_name }} {{ posts.author.last_name }} | {{ posts.author }} </p> <br>
+        <p class="date">{{ posts.date | date:"D d M Y"}}</p><br><br><br>
+            <h3 class="category">{{ posts.category }} <i class="far fa-comments"></i>  {{ posts.comments.count }}
+                {% if user.is_authenticated %}
+                            {% if user in posts.likes.all %}
+                                <a style="color: #02ccae;" href="{{ posts.id }}/unlike/{{ user.id }}">
+                                <i  class="far fa-thumbs-up"></i></a>
+                            {% else %}
+                                <a href="{{ posts.id }}/like/{{ user.id }}">
+                                <i class="far fa-thumbs-up"></i></a>
+                            {% endif %}
+                 {% else %}
+                        <i id="login-message" class="far fa-thumbs-up"></i>
+                 {% endif %}
+                 {{ posts.likes.count }}</h3><br>
+            <p class="text">{{ posts.post | safe }}
+            </p>
+    </div>
+</div>
+<div class="comments">
+    <input type="hidden" class="post_id" value={{ posts.id }}>
+    <input type="hidden" class="user_id" value={{ request.user.id }}>
+    <h1> Comments </h1>
+    {% if not posts.comments.all %}
+        <h4><i class="far fa-comments"></i> No comments yet ...</h4>
+        <form method="post">
+             {% csrf_token %}
+             {{ comment_frm }}
+            <button type="submit" id="comment-login-alert"> Comment </button>
+        </form>
+    {% else %}
+        <h4><i class="far fa-comments"></i> {{ posts.comments.count }} comments </h4>
+         <form method="post">
+             {% csrf_token %}
+             {{ comment_frm }}
+             {% if user.is_authenticated %}
+                <button type="submit"> Comment </button>
+             {% else %}
+                <button id="comment-login-alert"> Comment </button>
+             {% endif %}
+        </form>
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="user-img">
+                    <img src={{ comment.user.profile.image.url }}>
+                </div>
+                <div class="info">
+                    <h2>{{ comment.user.first_name }} {{ comment.user.last_name }} | {{ comment.user.username }}
+                        {% if comment.user.id == user.id %}
+                            <a href="{{ posts.id }}/del/{{ comment.id }}"> <i id="delete-btn" class="fas fa-trash-alt"></i> Delete </a>
+                        {% endif %}
+                    </h2>
+                    <h4> {{ comment.date | date:"D d M Y"}} </h4>
+                    <h5> {{ comment.text }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<div class="related">
+    <h1 class="container-heading">Related posts</h1>
+    <div class="related-posts">
+        {% for related in relateds %}
+        <div class="related-post">
+            <img src={{ related.image.url }} alt="related post">
+            <h2 class="related-post-date">{{ related.date | date:"D d M Y"}}</h2>
+            <a href="../single/{{ related.id }}"><h1 class="related-post-title">{{ related.title | slice:70 }}</h1></a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="{% static 'js/comment.js' %}"></script>
+{% endblock body %}

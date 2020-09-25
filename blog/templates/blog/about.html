@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<div class="about-container">
+    <div class="info">
+        <p class="info-heading"> Say your inner words</p>
+        <p class="info-description">Nam tempus velit sit amet urna tincidunt, sed auctor nulla interdum. Suspendisse
+            at sagittis est. Aliquam id quam congue, facilisis purus a, posuere erat. Nullam eget arcu nec odio suscipit
+            consectetur. Donec consectetur vestibulum purus. Duis dolor ipsum, consequat sed tempus vitae, tincidunt
+            quis velit. Sed non euismod odio. Nullam odio augue, lacinia in odio et. <br><br> imperdiet fringilla metus. Nunc
+            eget pharetra purus. Quisque sit amet elit vel metus scelerisque facilisis. Cras ut dolor vel diam cursus
+            volutpat venenatis vitae felis. Vivamus eu ligula nisl. Fusce sed pellentesque lacus.</p>
+    </div>
+    <div class="users">
+        <h1 class="users-heading">Authors</h1>
+        {% for user in users %}
+        <div class="user">
+            <img src={{ user.profile.image.url }}>
+            <h1 class="user-name"><i id="author-icon" class="fas fa-user"></i> {{ user.first_name }} {{ user.last_name }} ({{ user.username }})</h1>
+            <h1 class="user-mail"><i class="fas fa-envelope"></i> {{ user.email }}</h1>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
