@@ -1,0 +1,50 @@
+.logout{
+    height: 80vh;
+}
+.logout h2{
+    font-weight: lighter;
+}
+.logout-extra{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100px;
+    width: 400px;
+}
+.logout-extra a{
+    text-decoration: none;
+    color: #8aff00;
+}
+.footer{
+    position: absolute;
+    bottom: 0px;
+}
+
+
+/* media query */
+@media screen and (max-width: 600px){
+    .logout-extra{
+        position: absolute;
+        top: 50%;
+        left: 56%;
+        transform: translate(-50%, -56%);
+        height: 100px;
+        width: 400px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 600px){
+    .logout-extra{
+        position: absolute;
+        top: 50%;
+        left: 58%;
+        transform: translate(-50%, -50%);
+        height: 100px;
+        width: 300px;
+        font-size: 12px;
+    }
+    .logout{
+         height: 100vh;
+    }
+}

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/postedit.css' %}">
+<div class="edit-post">
+    <h1 style="padding: 0px 20px;">Edit post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ update_post.media }}
+        {{ update_post | crispy }}
+        <button type="submit"> Update </button>
+    </form>
+</div>
+<script src="{% static 'js/edit.js' %}"></script>
+{% endblock body %}

@@ -1,0 +1,87 @@
+h1{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.edit-post{
+    margin-top: 15px;
+    margin-bottom: 40px;
+    min-height: 380px;
+}
+.edit-post form{
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: none;
+}
+.edit-post form input, textarea{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: lightgray;
+}
+.edit-post form li, .text-muted{
+    list-style: none;
+    font-size: 10px;
+    color: #636363;
+    display: block;
+    margin-left: 10px;
+}
+.edit-post form button{
+    background-color: white;
+    color: #111;
+    transition: .2s;
+    padding: 10px 10px;
+    border: 2px solid #111;
+    font-size: 15px;
+    margin-top: 10px;
+}
+.edit-post form button:hover{
+    background-color: #111;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.signup .extra{
+    width: 400px;
+    font-size: 15px;
+    margin: auto;
+}
+.edit-post .extra p{
+    display: inline;
+}
+.edit-post .extra a{
+    color: #8aff00;
+    display: inline;
+    font-size: 15px;
+    text-decoration: none;
+}
+.edit-post form label{
+    margin-right: 10px;
+}
+#div_id_author{
+    display: none;
+}
+.edit-post a{
+    font-size: 10px;
+}
+#image-clear_id{
+    display: none;
+}
+.edit-post select{
+    padding: 5px;
+    width: 50xp;
+    border: none;
+    border-radius: 3px;
+    background-color: lightgray;
+}
+
+
+/* media query */
+@media screen and (max-width: 500px) {
+    .edit-post form{
+        width: 80%;
+        margin: auto;
+    }
+}

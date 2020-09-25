@@ -1,0 +1,312 @@
+.profile-btn{
+    border: 2px solid #111;
+}
+.profile{
+    margin: auto;
+    width: 80%;
+    min-height: 60vh;
+    padding-top: 25px;
+}
+.profile-heading{
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+}
+.profile h3, .profile h4{
+    font-weight: lighter;
+}
+.user-profile{
+    width: 300px;
+    float: left;
+    text-align: left;
+}
+.user-profile img{
+    width: 250px;
+    height: 300px;
+}
+.profile-update{
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+.profile form input{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: #f2f2f2;
+    margin-bottom: 5px;
+}
+.profile form button{
+    background-color: white;
+    padding: 5px 10px;
+    border: 2px solid #111;
+    font-size: 15px;
+    margin-top: 10px;
+    transition: .2s;
+}
+.profile form button:hover{
+    background: #111;
+    color: white;
+    transition: .2s;
+    cursor: pointer;
+}
+
+
+/* CURD */
+.curd-post{
+    margin: auto;
+    width: 80%;
+    min-height: 40vh;
+    margin-bottom: 40px;
+    padding-top: 70px;
+}
+.curd-post h1{
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.curd-post .form-group{
+    display: inline-block;
+}
+.curd-post .form-group:nth-child(5){
+    display: block;
+}
+.curd-post button{
+    background-color: white;
+    padding: 10px 20px;
+    border: 2px solid #111;
+    font-size: 16px;
+    margin-top: 10px;
+    display: block;
+    transition: .2s;
+}
+.curd-post button:hover{
+    background-color: #111;
+    color: white;
+    transition: .2s;
+    cursor: pointer;
+}
+#id_title{
+    width: 80%;
+    margin-right: 20%;
+}
+.curd-post input{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    margin-bottom: 5px;
+    float: left;
+    display: inline-block;
+}
+.curd-post select{
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    margin-bottom: 5px;
+    float: left;
+}
+.curd-post #cke_id_post{
+    width: 100%;
+}
+.curd-post form{
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+strong{
+    display: none;
+}
+.curd-post label:nth-child(2){
+    display:none;
+}
+
+
+/* my posts */
+.my-post{
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+}
+.my-post-heading{
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+.post{
+    margin-bottom: 65px;
+}
+.post .title{
+    margin-bottom: 15px;
+}
+.post a{
+    color: #111;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: .2s;
+}
+.post a:hover{
+    text-decoration: underline;
+    transition: .2s;
+}
+.post #quote-icon{
+    margin-left: -27px;
+    font-size: 27px;
+    display: block;
+}
+.post .category{
+    background-color: white;
+    border: 2px solid #111;
+    padding: 5px 12px;
+    display: inline-block;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.post .category i{
+    margin-left: 10px;
+}
+.post .delete{
+    display: inline-block;
+    margin-left: 5px;
+}
+.post .delete a{
+    border: 2px solid #ff4070;
+    color: #ff4070;
+    text-decoration: none;
+    color:  #ff4070;
+    padding: 5px 12px;
+    transition: .2s;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.post .delete a:hover{
+    background-color: #ff4070;
+    color: white;
+    transition: .2s;
+}
+.post .edit{
+    display: inline-block;
+    margin-left: 5px;
+}
+.post .edit a{
+    border: 2px solid #035c56;
+    color: #035c56;
+    text-decoration: none;
+    padding: 5px 12px;
+    transition: .2s;
+    font-weight: lighter;
+    font-size: 13px;
+}
+.post .edit a:hover{
+    background-color: #035c56;
+    color: white;
+    transition: .2s;
+}
+.post .title{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.post p{
+    font-size: 14px;
+}
+.post .post-img{
+    width: 320px;
+    height: 200px;
+    float: left;
+    margin-right: 30px;
+}
+.post .author{
+    display: inline;
+    margin-right: 6px;
+}
+.post #author-icon{
+    color: black;
+    margin-right: 3px;
+}
+.post .date{
+    display: inline;
+}
+.post #date-icon{
+    color:black;
+    margin-right: 3px;
+}
+.author-container{
+    width: 300px;
+    height: 50px;
+    float: left;
+    display: block;
+    margin-top: 10px;
+}
+.author-img{
+    height: 47px;
+    width: 47px;
+    float: left;
+    margin-right: 10px;
+}
+
+
+/* PAGINATION */
+.pagination{
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.pagination a{
+    text-decoration: none;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    margin-right: 5px;
+    color: #111;
+    border: 2px solid #111;
+    transition: .2s;
+}
+.pagination a:hover{
+    background-color: #111;
+    color: #ffffff;
+    cursor: pointer;
+    transition: .2s;
+}
+
+
+
+/* media query */
+@media screen and (max-width: 850px){
+    .post .edit{
+        margin-top: 10px;
+    }
+    .post .delete{
+        margin-top: 10px;
+    }
+    .post .category{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .profile{
+        min-height: 90vh;
+        margin-bottom: 20px;
+    }
+    .user-profile{
+        margin-bottom: 80px;
+    }
+    .profile-update{
+        width: 100%;
+    }
+    .profile form{
+        margin-bottom: 60px;
+    }
+    #id_title{
+        width: 99%;
+        margin-right: 0%;
+    }
+    .post .post-img{
+        width: 100%;
+        margin-right: 0px;
+    }
+    .post .delete{
+        margin-left: 0px;
+        margin-bottom: 5px;
+    }
+}
