@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from .forms import AddComment
 from django.contrib import messages
+from django.http import JsonResponse
 
 
 def home(request):
@@ -92,8 +93,9 @@ def like(request, id, user):
     posts = posts.objects.get(id=id)
     if request.method == 'GET':
         posts.likes.add(user)
-        return redirect('single', id=id)
-    return render(request, 'blog/single.html')
+    likes = posts.likes.count()
+    print(likes)
+    return JsonResponse({'like': 'false', 'likes': likes}, safe=False)
 
 
 def unlike(request, id, user):
@@ -101,5 +103,6 @@ def unlike(request, id, user):
     posts = posts.objects.get(id=id)
     if request.method == 'GET':
         posts.likes.remove(user)
-        return redirect('single', id=id)
-    return render(request, 'blog/single.html')
+    likes = posts.likes.count()
+    print(likes)
+    return JsonResponse({'like': 'true', 'likes': likes}, safe=False)
