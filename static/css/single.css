@@ -79,6 +79,9 @@ img{
 .read h3 i{
     margin-left: 10px;
 }
+.read .like-btn:hover{
+    cursor: pointer;
+}
 
 
 /* Table */
