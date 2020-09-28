@@ -1,4 +1,5 @@
 # Blog-Django
+##### See Screen-shot folder for templates
 ## Home page:
 ![](GIF/home.gif)
 
