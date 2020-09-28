@@ -11,21 +11,60 @@
         <p class="date">{{ posts.date | date:"D d M Y"}}</p><br><br><br>
             <h3 class="category">{{ posts.category }} <i class="far fa-comments"></i>  {{ posts.comments.count }}
                 {% if user.is_authenticated %}
-                            {% if user in posts.likes.all %}
-                                <a style="color: #02ccae;" href="{{ posts.id }}/unlike/{{ user.id }}">
-                                <i  class="far fa-thumbs-up"></i></a>
-                            {% else %}
-                                <a href="{{ posts.id }}/like/{{ user.id }}">
-                                <i class="far fa-thumbs-up"></i></a>
-                            {% endif %}
-                 {% else %}
-                        <i id="login-message" class="far fa-thumbs-up"></i>
-                 {% endif %}
-                 {{ posts.likes.count }}</h3><br>
+                    {% if user in posts.likes.all %}
+                        <span style="color: #00ad93" data-like="false" data-post="{{posts.id}}" data-user="{{ user.id }}" class="like-btn"><i  class="far fa-thumbs-up"></i>
+                    {% else %}
+                        <span style="color: #111" data-like="true" data-post="{{posts.id}}" data-user="{{ user.id }}" class="like-btn"><i  class="far fa-thumbs-up"></i>
+                    {% endif %}
+                {% else %}
+                    <i id="login-message" class="far fa-thumbs-up"></i>
+                {% endif %}
+                <span class="like-count">{{ posts.likes.count }}</span></span></h3><br>
             <p class="text">{{ posts.post | safe }}
             </p>
     </div>
 </div>
+<script>
+    var likes = document.querySelector('.likes');
+    var like_btn = document.querySelector('.like-btn');
+    like_btn.addEventListener('click', function(){
+        var user = like_btn.dataset.user;
+        var post = like_btn.dataset.post;
+        var like = like_btn.dataset.like;
+
+        if(like == 'true'){
+            var url = post + '/like/' + user;
+            fetch(url)
+            .then((response) => {
+        		return response.json();
+        	})
+        	.then((data) => {
+                like_btn.dataset.like = data['like'];
+                like_btn.style.color = '#00ad93';
+                document.querySelector('.like-count').innerHTML = data['likes'];
+        	})
+            .catch((error) => {
+                console.log("ERROR : ", error);
+            })
+        }
+        else{
+            var url = post + '/unlike/' + user;
+            fetch(url)
+            .then((response) => {
+        		return response.json();
+        	})
+        	.then((data) => {
+                like_btn.dataset.like = data['like'];
+                like_btn.style.color = '#111';
+                document.querySelector('.like-count').innerHTML = data['likes'];
+        	})
+            .catch((error) => {
+                console.log("ERROR : ", error);
+            })
+        }
+    })
+
+</script>
 <div class="comments">
     <input type="hidden" class="post_id" value={{ posts.id }}>
     <input type="hidden" class="user_id" value={{ request.user.id }}>
