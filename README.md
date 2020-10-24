@@ -21,3 +21,5 @@
 ![](GIF/profile.gif)
 ## Back-end:
 #### In the back-end I have used Django obviously and SQLite3 for database.
+
+# Super user: Blog
