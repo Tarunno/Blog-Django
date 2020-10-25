@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
-    'ckeditor'
+    'ckeditor',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
