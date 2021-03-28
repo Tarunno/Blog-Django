@@ -20,7 +20,8 @@ def home(request):
     context = {
         'posts': page_obj,
         'categories': categories,
-        'trendings': trendings
+        'trendings': trendings,
+        'title': 'home'
     }
     return render(request, 'blog/home.html', context)
 
