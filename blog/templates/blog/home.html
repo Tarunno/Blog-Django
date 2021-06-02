@@ -19,9 +19,9 @@
         <div class="trending-posts">
             {% for trending in trendings %}
             <div class="trending-post">
-                <img src={{ trending.post.image.url }} alt="trending post">
-                <h2 class="trending-post-date">{{ trending.post.date | date:"D d M Y"}}</h2>
-                <a href="single/{{ trending.post.id }}"><h1 class="trending-post-title">{{ trending.post.title | slice:70 }}</h1></a>
+                <img src={{ trending.image.url }} alt="trending post">
+                <h2 class="trending-post-date">{{ trending.date | date:"D d M Y"}}</h2>
+                <a href="single/{{ trending.id }}"><h1 class="trending-post-title">{{ trending.title | slice:70 }}</h1></a>
             </div>
             {% endfor %}
         </div>

@@ -64,11 +64,17 @@
     margin-top: 20px;
     margin-bottom: 25px;
 }
+#div_id_post{
+    display: inline-block;
+    width: 100%;
+}
+#div_id_image{
+    display: block;
+    max-width: 695px;
+    width: 100%;
+}
 .curd-post .form-group{
     display: inline-block;
-}
-.curd-post .form-group:nth-child(5){
-    display: block;
 }
 .curd-post button{
     background-color: white;

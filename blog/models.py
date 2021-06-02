@@ -21,7 +21,6 @@ class Post(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='post/')
     likes = models.ManyToManyField(User, related_name='post_likes')
 
-
     def __str__(self):
         return self.title[0:30]+'...'
 
@@ -35,13 +34,6 @@ class Post(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
 
-
-class Trending(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True, blank=True)
-    trending = models.BooleanField(default=False, null=True, blank=True)
-
-    def __str__(self):
-        return self.post.title[0:15] + '...  | ' + self.post.author.username
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)

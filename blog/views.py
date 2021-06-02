@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Post, Category, Comment, Trending
+from .models import Post, Category, Comment
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from .forms import AddComment
 from django.contrib import messages
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -12,7 +13,16 @@ def home(request):
     categories = Category.objects.all()
     paginator = Paginator(posts, 4)  # Show 4 posts per page.
 
-    trendings = Trending.objects.filter(trending=True).all()[0:3]
+    maxi = {post.id: post.likes.count() for post in posts}
+    maxi = sorted(maxi.items(), reverse=True, key=lambda x: x[1])
+    maxi = maxi[0:3]
+    print(maxi)
+    trendings = list()
+    for i in maxi:
+        for post in posts:
+            if post.id == i[0]:
+                trendings.append(post)
+    print(trendings)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -77,7 +87,7 @@ def Categoryhome(request, id):
     }
     return render(request, 'blog/category-home.html', context)
 
-
+@login_required(login_url="login")
 def delete_comment(request, id, del_id):
     posts = Post
     posts = posts.objects.get(id=id)
@@ -88,7 +98,7 @@ def delete_comment(request, id, del_id):
         return redirect('single', id=id)
     return render(request, 'blog/single.html')
 
-
+@login_required(login_url="login")
 def like(request, id, user):
     posts = Post
     posts = posts.objects.get(id=id)
@@ -98,7 +108,7 @@ def like(request, id, user):
     print(likes)
     return JsonResponse({'like': 'false', 'likes': likes}, safe=False)
 
-
+@login_required(login_url="login")
 def unlike(request, id, user):
     posts = Post
     posts = posts.objects.get(id=id)
