@@ -7,16 +7,16 @@
 # Profile:
 ![](GIF/profile.gif)
 <hr/>
-# Front-end:
-- Language: HTML, CSS and JavaScript 
-- Django pagination 
-- Django forms 
-- Responsive 
-- CKeditor 4
+# Front-end: <br/>
+- Language: HTML, CSS and JavaScript <br/>
+- Django pagination <br/>
+- Django forms <br/>
+- Responsive <br/>
+- CKeditor 4<br/>
 
-# Back-end:
-- Django
-- SQLite 
-- CURD 
-- Django Authentication 
+# Back-end: <br>
+- Django <br/>
+- SQLite <br/>
+- CURD <br/>
+- Django Authentication <br/>
 
