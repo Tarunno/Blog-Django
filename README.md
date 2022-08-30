@@ -6,7 +6,7 @@
 ![](GIF/post.gif)
 # Profile:
 ![](GIF/profile.gif)
-<hr/>
+
 # Front-end: <br/>
 - Language: HTML, CSS and JavaScript <br/>
 - Django pagination <br/>
