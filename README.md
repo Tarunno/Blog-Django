@@ -4,8 +4,6 @@
 ![](GIF/home.gif)
 # Single Post:
 ![](GIF/post.gif)
-# Profile:
-![](GIF/profile.gif)
 
 # Front-end: <br/>
 - Language: HTML, CSS and JavaScript <br/>
